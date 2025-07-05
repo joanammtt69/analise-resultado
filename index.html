@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Análise em Progresso</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+  <style>
+    /* Reset básico */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Rubik', sans-serif;
+      background: #fffdfa;
+      margin: 20px;
+      color: #333;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      line-height: 1.4;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    h1 {
+      font-size: 1.4rem;
+      font-weight: 500;
+      text-align: center;
+      margin-bottom: 0.5rem;
+      max-width: 320px;
+    }
+
+    .dots span {
+      animation: blink 1s infinite;
+      margin-left: 3px;
+      font-weight: 700;
+      font-size: 1.6rem;
+      line-height: 1;
+      color: #ff8276;
+    }
+
+    .dots span:nth-child(2) { animation-delay: 0.2s; }
+    .dots span:nth-child(3) { animation-delay: 0.4s; }
+
+    @keyframes blink {
+      0%, 20% { opacity: 0; }
+      50% { opacity: 1; }
+      100% { opacity: 0; }
+    }
+
+    .progress-container {
+      margin-top: 25px;
+      width: 100%;
+      max-width: 400px;
+    }
+
+    .progress-step {
+      margin-bottom: 25px;
+    }
+
+    .progress-step p {
+      display: flex;
+      justify-content: space-between;
+      font-weight: 500;
+      font-size: 1rem;
+      margin-bottom: 6px;
+      color: #444;
+    }
+
+    progress {
+      width: 100%;
+      height: 12px;
+      appearance: none;
+      border-radius: 8px;
+      overflow: hidden;
+      background-color: #f1f1f1;
+    }
+
+    progress::-webkit-progress-bar {
+      background-color: #f1f1f1;
+      border-radius: 8px;
+    }
+
+    progress::-webkit-progress-value {
+      background-color: #ff8276;
+      border-radius: 8px;
+      transition: width 0.3s ease;
+    }
+
+    progress::-moz-progress-bar {
+      background-color: #ff8276;
+      border-radius: 8px;
+      transition: width 0.3s ease;
+    }
+
+    h2 {
+      margin-top: 30px;
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: #444;
+      text-align: center;
+      max-width: 400px;
+    }
+
+    /* Swiper */
+    .swiper {
+      width: 100%;
+      max-width: 400px;
+      margin-top: 20px;
+      padding-bottom: 20px;
+    }
+
+    .swiper-slide {
+      background-color: #fff;
+      border: 1px solid #eee;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      user-select: none;
+      min-height: 180px;
+      justify-content: center;
+    }
+
+    .swiper-slide img {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      margin-bottom: 10px;
+      object-fit: cover;
+    }
+
+    .stars {
+      color: #ffbe5c;
+      font-size: 18px;
+      margin-bottom: 10px;
+      user-select: none;
+    }
+
+    .swiper-slide p {
+      font-size: 0.9rem;
+      color: #555;
+      line-height: 1.4;
+      margin-bottom: 10px;
+      padding: 0 10px;
+    }
+
+    .swiper-slide h3 {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: #666;
+      margin-top: 0;
+      user-select: none;
+    }
+
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0,0,0,0.5);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      padding: 15px;
+    }
+
+    .modal-content {
+      background: #fff;
+      padding: 24px 20px;
+      border-radius: 12px;
+      text-align: center;
+      max-width: 320px;
+      width: 100%;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      font-size: 1rem;
+    }
+
+    .modal-content h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    .modal-content button {
+      background: #ff8276;
+      color: #fff;
+      padding: 12px 28px;
+      border: none;
+      margin: 0 12px;
+      cursor: pointer;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: background-color 0.3s ease;
+      user-select: none;
+      min-width: 80px;
+    }
+
+    .modal-content button:hover,
+    .modal-content button:focus {
+      background-color: #e4695f;
+      outline: none;
+    }
+
+    /* Responsividade */
+    @media (max-width: 440px) {
+      body {
+        margin: 16px 12px 30px;
+      }
+
+      h1 {
+        font-size: 1.25rem;
+        max-width: 280px;
+      }
+
+      .progress-container {
+        max-width: 100%;
+      }
+
+      .swiper {
+        max-width: 100%;
+        padding-bottom: 24px;
+      }
+
+      .swiper-slide p {
+        font-size: 0.85rem;
+        padding: 0 8px;
+      }
+
+      .modal-content {
+        font-size: 0.95rem;
+        padding: 20px 16px;
+      }
+
+      .modal-content button {
+        padding: 10px 22px;
+        font-size: 0.9rem;
+        min-width: 70px;
+        margin: 0 8px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Analisando suas respostas <span class="dots"><span>.</span><span>.</span><span>.</span></span></h1>
+
+  <div class="progress-container">
+    <div class="progress-step">
+      <p>
+        <span>Analisando a condição da sua pele</span>
+        <span id="label1">0%</span>
+      </p>
+      <progress id="bar1" value="0" max="100"></progress>
+    </div>
+
+    <div class="progress-step">
+      <p>
+        <span>Revisando seus cuidados e rotinas</span>
+        <span id="label2">0%</span>
+      </p>
+      <progress id="bar2" value="0" max="100"></progress>
+    </div>
+
+    <div class="progress-step">
+      <p>
+        <span>Considerando condições médicas</span>
+        <span id="label3">0%</span>
+      </p>
+      <progress id="bar3" value="0" max="100"></progress>
+    </div>
+
+    <div class="progress-step">
+      <p>
+        <span>Gerando seu plano de ação</span>
+        <span id="label4">0%</span>
+      </p>
+      <progress id="bar4" value="0" max="100"></progress>
+    </div>
+  </div>
+
+  <h2>Com a confiança de 273.908 clientes</h2>
+
+  <div class="swiper mySwiper" aria-label="Depoimentos de clientes">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="Depoimento 1">
+        <img src="https://via.placeholder.com/50" alt="Foto de Kauth Reese" />
+        <div class="stars" aria-label="5 estrelas">⭐⭐⭐⭐⭐</div>
+        <p>Faz com que sinta meu rosto muito melhor. É tão relaxante, exatamente o que você precisa depois de um dia corrido.</p>
+        <h3>Kauth Reese</h3>
+      </div>
+      <div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="Depoimento 2">
+        <img src="https://via.placeholder.com/50" alt="Foto de Tammyjostanley" />
+        <div class="stars" aria-label="5 estrelas">⭐⭐⭐⭐⭐</div>
+        <p>Sinto o sangue circulando. É excelente para fortalecer os músculos faciais! Vale totalmente o preço.</p>
+        <h3>Tammyjostanley</h3>
+      </div>
+      <div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="Depoimento 3">
+        <img src="https://via.placeholder.com/50" alt="Foto de birds and me" />
+        <div class="stars" aria-label="5 estrelas">⭐⭐⭐⭐⭐</div>
+        <p>Relaxou meu rosto, corpo e mente também. Fantástico!</p>
+        <h3>birds and me</h3>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div id="modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-question">
+    <div class="modal-content">
+      <h3 id="modal-question">Pergunta aqui</h3>
+      <button type="button" onclick="responder()">Sim</button>
+      <button type="button" onclick="responder()">Não</button>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+  <script>
+    // Inicializa Swiper
+    const swiper = new Swiper(".mySwiper", {
+      loop: true,
+      autoplay: {
+        delay: 4500,
+        disableOnInteraction: false,
+      },
+      slidesPerView: 1,
+      spaceBetween: 20,
+      keyboard: {
+        enabled: true,
+      },
+      a11y: {
+        enabled: true,
+        prevSlideMessage: 'Slide anterior',
+        nextSlideMessage: 'Próximo slide',
+      }
+    });
+
+    const steps = [
+      { id: 'bar1', label: 'label1', target: 100 },
+      { id: 'bar2', label: 'label2', target: 100, pergunta: 'Você usa maquiagem diariamente?', stopAt: 80 },
+      { id: 'bar3', label: 'label3', target: 100, pergunta: 'Você já fez ioga facial antes?', stopAt: 80 },
+      { id: 'bar4', label: 'label4', target: 100 }
+    ];
+
+    let current = 0;
+    let value = 0;
+    let interval;
+    const modal = document.getElementById('modal');
+    const modalQuestion = document.getElementById('modal-question');
+
+    function animateStep() {
+  const step = steps[current];
+  const bar = document.getElementById(step.id);
+  const label = document.getElementById(step.label);
+  value = bar.value;
+
+  interval = setInterval(() => {
+    value++;
+    bar.value = value;
+    label.textContent = value + '%';
+
+    if (step.pergunta && value === step.stopAt) {
+      clearInterval(interval);
+      showModal(step.pergunta);
+    } else if (value >= step.target) {
+      clearInterval(interval);
+      current++;
+      if (current < steps.length) {
+        animateStep();
+      } else {
+        // Removida a linha alert("Análise concluída! Pronto para o plano de ação.");
+        // Aqui pode adicionar outra ação, se quiser
+      }
+    }
+  }, 70); // 7 segundos por barra
+}
+
+
+    function showModal(pergunta) {
+      modalQuestion.textContent = pergunta;
+      modal.style.display = 'flex';
+    }
+
+    function responder() {
+      modal.style.display = 'none';
+      animateStep();
+    }
+
+    animateStep();
+  </script>
+
+</body>
+</html>
