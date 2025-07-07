@@ -122,58 +122,83 @@
       max-width: 100%;
     }
 
-    /* Swiper */
-    .swiper {
+    .ig-comentarios {
       width: 100%;
-      max-width: 100%;
+      max-width: 480px;
       margin-top: 20px;
       padding-bottom: 20px;
     }
 
-    .swiper-slide {
-      background-color: #fff;
-      border: 1px solid #eee;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+    .ig-box-comentario {
       display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      user-select: none;
-      min-height: 180px;
-      justify-content: center;
+      align-items: flex-start;
+      margin-bottom: 20px;
     }
 
-    .swiper-slide img {
-      width: 48px;
-      height: 48px;
+    .ig-box-comentario img {
       border-radius: 50%;
-      margin-bottom: 10px;
-      object-fit: cover;
+      width: 42px;
+      height: 42px;
+      margin-right: 10px;
     }
 
-    .stars {
-      color: #ffbe5c;
-      font-size: 18px;
-      margin-bottom: 10px;
-      user-select: none;
-    }
-
-    .swiper-slide p {
-      font-size: 0.9rem;
-      color: #555;
+    .ig-texto p {
+      margin: 4px 0;
+      font-size: 14px;
+      color: #262626;
       line-height: 1.4;
-      margin-bottom: 10px;
-      padding: 0 10px;
     }
 
-    .swiper-slide h3 {
-      font-size: 0.9rem;
-      font-weight: 500;
-      color: #666;
-      margin-top: 0;
-      user-select: none;
+    .ig-texto strong {
+      font-weight: 600;
+    }
+
+    .ig-tempo {
+      color: #999;
+      font-size: 11px;
+      margin-left: 6px;
+    }
+
+    .ig-reacoes {
+      font-size: 12px;
+      color: #8e8e8e;
+      margin-top: 4px;
+    }
+
+    .ig-resposta {
+      display: flex;
+      align-items: flex-start;
+      margin-top: 12px;
+      margin-left: 50px;
+    }
+
+    .ig-resposta img {
+      border-radius: 50%;
+      width: 36px;
+      height: 36px;
+      margin-right: 8px;
+    }
+
+    .ig-resposta .ig-reacoes {
+      font-size: 11px;
+      color: #8e8e8e;
+      margin-top: 2px;
+    }
+
+    .ig-plugin {
+      display: flex;
+      align-items: center;
+      margin-top: 30px;
+      font-size: 14px;
+      color: #888;
+      border-top: 1px solid #eee;
+      padding-top: 12px;
+    }
+
+    .ig-plugin img {
+      width: 20px;
+      height: 20px;
+      margin-right: 6px;
     }
 
     /* Modal */
@@ -300,26 +325,51 @@
 
     <h2>Com a confiança de 273.908 clientes</h2>
 
-    <div class="swiper mySwiper" aria-label="Depoimentos de clientes">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="Depoimento 1">
-          <div class="stars" aria-label="5 estrelas">⭐⭐⭐⭐⭐</div>
-          <p>Nossa meninas.. sinto meu rosto muito melhor. É muuito relaxante, exatamente o que você precisa depois de um dia corrido.</p>
-          <h3>Laura Gomes</h3>
-        </div>
-        <div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="Depoimento 2">
-          <div class="stars" aria-label="5 estrelas">⭐⭐⭐⭐⭐</div>
-          <p>Todo mundo disse que to ficando com o rosto mais definido, resultado de botox de rica sendo pobre kkkkk adoroo</p>
-          <h3>Tammyres Araújo</h3>
-        </div>
-        <div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="Depoimento 3">
-          <div class="stars" aria-label="5 estrelas">⭐⭐⭐⭐⭐</div>
-          <p>Já tenho 64 anos, a gente sabe que essa idade deixa tudo pra baixo, inclusive autoestima, mas isso realmente relaxou meu rosto, corpo e mente também. Fantástico!</p>
-          <h3>Glória Silva</h3>
+    <div class="ig-comentarios">
+      <!-- Comentário com resposta -->
+      <div class="ig-box-comentario">
+        <img src="https://i.pravatar.cc/150?img=12" alt="gloria.64">
+        <div class="ig-texto">
+          <p><strong>gloria.64</strong> <span class="ig-tempo">3h</span></p>
+          <p>Tenho 64 anos e minha autoestima foi lá em cima com esse cuidado. Obrigada!</p>
+          <div class="ig-reacoes">12 curtidas · Responder</div>
+
+          <div class="ig-resposta">
+            <img src="https://i.pravatar.cc/150?img=41" alt="neuzinha_bemestar">
+            <div>
+              <p><strong>neuzinha_bemestar</strong> <span class="ig-tempo">1h</span></p>
+              <p>Eu tenho 59 amg e tbm funcionou pra mim 💖</p>
+              <div class="ig-reacoes">5 curtidas · Responder</div>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
 
+      <!-- Comentários adicionais -->
+      <div class="ig-box-comentario">
+        <img src="https://i.pravatar.cc/150?img=8" alt="tammyres_araujo">
+        <div class="ig-texto">
+          <p><strong>tammyres_araujo</strong> <span class="ig-tempo">5h</span></p>
+          <p>Todo mundo disse que to ficando com o rosto mais definido, resultado de botox de rica sendo pobre kkkkk adoroo</p>
+          <div class="ig-reacoes">24 curtidas · Responder</div>
+        </div>
+      </div>
+
+      <div class="ig-box-comentario">
+        <img src="https://i.pravatar.cc/150?img=7" alt="laurinha_gomes">
+        <div class="ig-texto">
+          <p><strong>laurinha_gomes</strong> <span class="ig-tempo">7h</span></p>
+          <p>Nossa meninas.. sinto meu rosto muito melhor. É muuito relaxante, exatamente o que você precisa depois de um dia corrido.</p>
+          <div class="ig-reacoes">31 curtidas · Responder</div>
+        </div>
+      </div>
+
+      <!-- Plugin Instagram -->
+      <div class="ig-plugin">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Instagram_icon.png/48px-Instagram_icon.png" alt="Instagram">
+        <span>Plug-in oficial do Instagram</span>
+      </div>
+    </div>
   </div>
 
   <!-- Modal -->
