@@ -17,14 +17,14 @@
       width: 100vw;
       overflow: hidden;
       font-family: 'Rubik', sans-serif;
-      background: #fdfdff;
+      background: transparent; /* Fundo transparente */
       display: flex;
       justify-content: center;
       align-items: center;
     }
 
     #quiz-container {
-      height: 100%;
+      height: auto;
       width: 100%;
       max-width: 480px;
       padding: 16px;
@@ -32,15 +32,14 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      overflow-y: auto;
-      -webkit-overflow-scrolling: touch;
     }
 
     h1 {
       font-size: 1.4rem;
-      font-weight: 500;
+      font-weight: 700;
       text-align: center;
-      margin-bottom: 0.5rem;
+      margin-bottom: 1rem;
+      color: #000; /* Preto para título */
     }
 
     .dots span {
@@ -49,7 +48,7 @@
       font-weight: 700;
       font-size: 1.6rem;
       line-height: 1;
-      color: #ff8276;
+      color: #ffe89c; /* Amarelo suave */
     }
 
     .dots span:nth-child(2) { animation-delay: 0.2s; }
@@ -76,7 +75,7 @@
       font-weight: 500;
       font-size: 1rem;
       margin-bottom: 6px;
-      color: #444;
+      color: #333; /* Cinza escuro */
     }
 
     progress {
@@ -84,175 +83,43 @@
       height: 12px;
       appearance: none;
       border-radius: 8px;
-      background-color: #f1f1f1;
+      background-color: #f9f9f9; /* fundo quase branco */
     }
 
     progress::-webkit-progress-value {
-      background-color: #ff8276;
+      background-color: #ffe89c; /* Amarelo */
       border-radius: 8px;
       transition: width 0.3s ease;
     }
 
     progress::-moz-progress-bar {
-      background-color: #ff8276;
+      background-color: #ffe89c;
       border-radius: 8px;
       transition: width 0.3s ease;
-    }
-
-    h2 {
-      margin-top: 30px;
-      font-size: 1.1rem;
-      font-weight: 500;
-      color: #444;
-      text-align: center;
-    }
-
-    .ig-comentarios {
-      width: 100%;
-      max-width: 480px;
-      margin-top: 20px;
-      padding-bottom: 20px;
-    }
-
-    .ig-box-comentario {
-      display: flex;
-      align-items: flex-start;
-      margin-bottom: 20px;
-    }
-
-    .ig-box-comentario img {
-      border-radius: 50%;
-      width: 42px;
-      height: 42px;
-      margin-right: 10px;
-    }
-
-    .ig-texto p {
-      margin: 4px 0;
-      font-size: 14px;
-      color: #262626;
-      line-height: 1.4;
-    }
-
-    .ig-texto strong {
-      font-weight: 600;
-    }
-
-    .ig-tempo {
-      color: #999;
-      font-size: 11px;
-      margin-left: 6px;
-    }
-
-    .ig-reacoes {
-      font-size: 12px;
-      color: #8e8e8e;
-      margin-top: 4px;
-    }
-
-    .ig-resposta {
-      display: flex;
-      align-items: flex-start;
-      margin-top: 12px;
-      margin-left: 50px;
-    }
-
-    .ig-resposta img {
-      border-radius: 50%;
-      width: 26px;
-      height: 26px;
-      margin-right: 8px;
-    }
-
-    .ig-resposta .ig-reacoes {
-      font-size: 11px;
-      color: #8e8e8e;
-      margin-top: 2px;
-    }
-
-    .ig-plugin {
-      display: flex;
-      align-items: center;
-      margin-top: 30px;
-      font-size: 14px;
-      color: #888;
-      border-top: 1px solid #eee;
-      padding-top: 12px;
-    }
-
-    .ig-plugin img {
-      width: 20px;
-      height: 20px;
-      margin-right: 6px;
     }
   </style>
 </head>
 <body>
 
   <div id="quiz-container">
-    <h1>Analisando suas respostas <span class="dots"><span>.</span><span>.</span><span>.</span></span></h1>
+    <h1>Calculando resultados e criando seu relatório personalizado <span class="dots"><span>.</span><span>.</span><span>.</span></span></h1>
 
     <div class="progress-container">
       <div class="progress-step">
-        <p><span>Avaliando sua memória recente</span><span id="label1">0%</span></p>
+        <p><span>Analisando seus padrões e respostas</span><span id="label1">0%</span></p>
         <progress id="bar1" value="0" max="100"></progress>
       </div>
       <div class="progress-step">
-        <p><span>Mediando sua concentração e foco</span><span id="label2">0%</span></p>
+        <p><span>Análise de Crescimento e Evolução</span><span id="label2">0%</span></p>
         <progress id="bar2" value="0" max="100"></progress>
       </div>
       <div class="progress-step">
-        <p><span>Identificando sinais de esquecimento</span><span id="label3">0%</span></p>
+        <p><span>Inspeção de Dinâmica de Interação</span><span id="label3">0%</span></p>
         <progress id="bar3" value="0" max="100"></progress>
       </div>
       <div class="progress-step">
-        <p><span>Gerando seu plano de exercícios cognitivos</span><span id="label4">0%</span></p>
+        <p><span>Decodificando seus comportamentos e tendências</span><span id="label4">0%</span></p>
         <progress id="bar4" value="0" max="100"></progress>
-      </div>
-    </div>
-
-    <h2>Mais de 200 mil pessoas já treinaram o cérebro com nossos exercícios</h2>
-
-    <div class="ig-comentarios">
-      <!-- Comentários adaptados -->
-      <div class="ig-box-comentario">
-        <img src="https://protocolocriancanovamente.com.br/wp-content/uploads/2025/07/gloriademaria.jpg" alt="gloria64">
-        <div class="ig-texto">
-          <p><strong>gloria.demaria2021</strong> <span class="ig-tempo">3h</span></p>
-          <p>Tenho 64 anos e já estava esquecendo até onde deixava as chaves. Esses exercícios mudaram minha vida!</p>
-          <div class="ig-reacoes">22 curtidas · Responder</div>
-          <div class="ig-resposta">
-            <img src="https://protocolocriancanovamente.com.br/wp-content/uploads/2025/07/neuzinha.jpg" alt="neuzinha">
-            <div>
-              <p><strong>neuzinha_oliverira_</strong> <span class="ig-tempo">1h</span></p>
-              <p>Eu também, amiga! Tenho 59 e minha memória melhorou muito 💖</p>
-              <div class="ig-reacoes">7 curtidas · Responder</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="ig-box-comentario">
-        <img src="https://protocolocriancanovamente.com.br/wp-content/uploads/2025/07/Design-sem-nome-_4_-1.webp" alt="joaobrito">
-        <div class="ig-texto">
-          <p><strong>joao.brito50</strong> <span class="ig-tempo">5h</span></p>
-          <p>Estou com 52 e me sentia confuso às vezes. Depois de uma semana já senti mais clareza mental.</p>
-          <div class="ig-reacoes">18 curtidas · Responder</div>
-        </div>
-      </div>
-
-      <div class="ig-box-comentario">
-        <img src="https://protocolocriancanovamente.com.br/wp-content/uploads/2025/07/perfil-sem-foto.webp" alt="laurinha">
-        <div class="ig-texto">
-          <p><strong>laurinha_gomes</strong> <span class="ig-tempo">7h</span></p>
-          <p>Nunca imaginei que exercícios tão simples poderiam ajudar tanto na memória. Recomendo demais!</p>
-          <div class="ig-reacoes">31 curtidas · Responder</div>
-        </div>
-      </div>
-
-      <div class="ig-plugin">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Instagram_icon.png/48px-Instagram_icon.png" alt="Instagram">
-        <span>Plug-in oficial do Instagram</span>
       </div>
     </div>
   </div>
